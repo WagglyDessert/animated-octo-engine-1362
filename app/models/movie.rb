@@ -4,7 +4,7 @@ class Movie < ApplicationRecord
   has_many :actors, through: :movie_actors
 
   def order_by_age
-    actors.order(age: :asc).pluck(:name)
+    actors.order(age: :asc)
   end
 
   def avg_age

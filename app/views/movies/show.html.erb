@@ -1,9 +1,13 @@
 <h3> Movie Information</h3>
-<h3> Title: <%= @movie.title %></h3>
-<h3> Year: <%= @movie.creation_year %></h3>
-<h3> Genre: <%= @movie.genre %></h3>
-<h5> Actors: <%= @movie.order_by_age %></h5>
-<h5> Actors Average Age: <%= @movie.avg_age %></h5>
+  <section id="movie-details">
+    <h3> Title: <%= @movie.title %></h3>
+    <h3> Year: <%= @movie.creation_year %></h3>
+    <h3> Genre: <%= @movie.genre %></h3>
+    <h5> Actors: <%= @movie.order_by_age.each do |a| %></h5>
+      <p><%= a.name%></p>
+      <% end %>
+    <h5> Actors Average Age: <%= @movie.avg_age %></h5>
+  </section>
 
   <%= form_with url: "/movies/#{@movie.id}", method: :patch, data: {turbo: false} do |form| %>
     <p><%= form.label :search_by_name, "Add an actor to this movie" %></p>

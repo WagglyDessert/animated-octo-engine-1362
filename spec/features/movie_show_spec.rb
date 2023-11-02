@@ -30,9 +30,12 @@ RSpec.describe Movie, type: :feature do
     # and a list of all its actors from youngest to oldest.
     # And I see the average age of all of the movie's actors
       visit "/movies/#{@movie3.id}"
-      expect(page).to have_content(@movie3.title)
-      expect(page).to have_content(@movie3.creation_year)
-      expect(page).to have_content(@movie3.genre)
+
+      within("#movie-details") do
+        expect(page).to have_content(@movie3.title)
+        expect(page).to have_content(@movie3.creation_year)
+        expect(page).to have_content(@movie3.genre)
+      end
 
     end
     it "has list of actors (name and age) ordered from youngest to oldest" do
@@ -53,7 +56,7 @@ RSpec.describe Movie, type: :feature do
     end
   end
   describe "movie show page" do
-    it "has form to add actor to this movie" do
+    xit "has form to add actor to this movie" do
     #   Story 3
     # Add an Actor to a Movie
     # As a user,

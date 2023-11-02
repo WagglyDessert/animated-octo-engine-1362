@@ -1,9 +1,11 @@
 <h3> Studio Information</h3>
 <% @studios.each do |s| %>
-  <h3> Name: <%= s.name %></h3>
-  <h3> Location: <%= s.location %></h3>
-  <h5>Movies:</h5>
-  <% s.movies.each do |m| %>
-  <h5><%= m.title %>, <%= m.creation_year %>, <%= m.genre %></h5>
-<% end %>
+  <section id="studio-<%= s.id%>">
+    <h3> Name: <%= s.name %></h3>
+    <h3> Location: <%= s.location %></h3>
+    <h5>Movies:</h5>
+    <% s.movies.each do |m| %>
+      <h5><%= m.title %>, <%= m.creation_year %>, <%= m.genre %></h5>
+    <% end %>
+  </section>
 <% end %>

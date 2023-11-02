@@ -18,11 +18,25 @@ RSpec.describe Studio, type: :feature do
     # And under each studio I see all of the studio's movies
     # including the movie's title, creation year, and genre
       visit "/studios"
-      expect(page).to have_content(@studio1.name)
-      expect(page).to have_content(@studio1.location)
-      expect(page).to have_content(@movie1.title)
-      expect(page).to have_content(@movie1.creation_year)
-      expect(page).to have_content(@movie1.genre)
+
+      within("#studio-#{@studio1.id}") do
+        expect(page).to have_content(@studio1.name)
+        expect(page).to have_content(@studio1.location)
+        expect(page).to have_content(@movie1.title)
+        expect(page).to have_content(@movie1.creation_year)
+        expect(page).to have_content(@movie1.genre)
+        expect(page).to have_content(@movie2.title)
+        expect(page).to have_content(@movie2.creation_year)
+        expect(page).to have_content(@movie2.genre)
+      end
+
+      within("#studio-#{@studio2.id}") do
+        expect(page).to have_content(@studio2.name)
+        expect(page).to have_content(@studio2.location)
+        expect(page).to have_content(@movie3.title)
+        expect(page).to have_content(@movie3.creation_year)
+        expect(page).to have_content(@movie3.genre)
+      end
     end
   end
 end
