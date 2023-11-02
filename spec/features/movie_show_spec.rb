@@ -56,8 +56,8 @@ RSpec.describe Movie, type: :feature do
     end
   end
   describe "movie show page" do
-    xit "has form to add actor to this movie" do
-    #   Story 3
+    it "has form to add actor to this movie" do
+    # Story 3
     # Add an Actor to a Movie
     # As a user,
     # When I visit a movie show page,
@@ -65,13 +65,13 @@ RSpec.describe Movie, type: :feature do
     # I do not see any actors listed that are not part of the movie
     expect(page).to_not have_content(@actor4.name)
     # And I see a form to add an actor to this movie
-    expect(page).to have_selector('form', text: 'Add an actor to this movie')
+    expect(page).to have_field(:actor_id)
     # When I fill in the form with the ID of an actor that exists in the database
-    fill_in 'Add an actor to this movie', with: 'NomNom'
+    fill_in :actor_id, with: @actor4.id
     # And I click submit
     click_button("submit")
     # Then I am redirected back to that movie's show page
-    expect(current_page).to be "/movies/#{@movie3.id}"
+    expect(current_path).to eq "/movies/#{@movie3.id}"
     # And I see the actor's name is now listed
     expect(page).to have_content(@actor4.name)
     # (You do not have to test for a sad path, for example if the id submitted is not an existing actor)

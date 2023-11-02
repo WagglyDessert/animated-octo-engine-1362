@@ -9,8 +9,8 @@
     <h5> Actors Average Age: <%= @movie.avg_age %></h5>
   </section>
 
-  <%= form_with url: "/movies/#{@movie.id}", method: :patch, data: {turbo: false} do |form| %>
-    <p><%= form.label :search_by_name, "Add an actor to this movie" %></p>
-    <%= form.text_field :search_by_name, value: params[:search_by_name] %>
+  <%= form_with url: "/movies/#{@movie.id}/actors", method: :post, data: {turbo: false} do |form| %>
+    <p><%= form.label "Add an actor to this movie" %></p>
+    <%= form.text_field :actor_id  %>
     <%= form.submit 'submit' %>
   <% end %>

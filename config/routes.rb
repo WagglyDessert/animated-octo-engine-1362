@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get "/studios", to: "studios#index"
-
+  #resources :studios, only: :index
   get "/movies/:id", to: "movies#show"
-  patch "/movies/:id", to: "movies#update"
+  #resources :movies, only: :show do
+  #resources :actors, only: :create
+  post "/movies/:id/actors", to: "movie_actors#create"
 end
